@@ -1,7 +1,7 @@
 <!--Doctype html -->
 <html>
   <head>
-    <style type="text/css"></style>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="javascript">
 
     </script>
@@ -13,5 +13,20 @@
       <source src="https://s3.amazonaws.com/fdpinvideo-s3bucket-1o7psrb07l9xn/input/TheDeparted_trailer.mp4" type="video/mp4">
       <p>Your browser doesn't support HTML5 video. Here is a <a href="https://s3.amazonaws.com/fdpinvideo-s3bucket-1o7psrb07l9xn/input/TheDeparted_trailer.mp4">link to the video</a> instead.</p>
     </video>
+
+    <!-- Voting form -->
+    <form action="https://kfb9dlbm36.execute-api.us-west-2.amazonaws.com/prod/vote" method="post" onsubmit="hideForm()">
+      <div class="center">
+        <div>
+        <input type="radio" name="vote" value="none" checked id="radio1"><label for="radio1">Too close to call (I'm on the fence)</label>
+        </div><div>
+        <input type="radio" name="vote" value="Safe" id="radio2"><label for="radio2">Safe for sure, aye!</label>
+        </div><div>
+        <input type="radio" name="vote" value="Out" id="radio3"><label for="radio3">Definitely out, mate!</label>
+        </div>
+      </div>
+      <div style="padding-top: 20px;"><input type="submit" value="Submit" /></div>
+    </form>
+    <div class="thanks" style="display:none">Thanks for voting!</div>
   </body>
 </html>

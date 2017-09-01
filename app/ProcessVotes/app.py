@@ -65,7 +65,6 @@ def CastVote():
         print "FRAC_Votes dynamodb table created"
         pass
     except Exception as e:
-        
         raise
 
     return json.dumps(identity)
