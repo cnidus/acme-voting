@@ -1,42 +1,43 @@
 <!--Doctype html -->
 <html>
   <head>
-    <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="javascript">
+
+    </script>
   </head>
   <body>
-    <div id="video-area" style="width:40%">
-      <video controls>
-        <source src="https://s3.amazonaws.com/fdpinvideo-s3bucket-1o7psrb07l9xn/input/TheDeparted_trailer.mp4" type="video/mp4">
-        <p>Your browser doesn't support HTML5 video. Here is a <a href="https://s3.amazonaws.com/fdpinvideo-s3bucket-1o7psrb07l9xn/input/TheDeparted_trailer.mp4">link to the video</a> instead.</p>
-      </video>
-    </div>
-    <div id="voting-area">
-      <!-- Voting form -->
-      <form action="https://3u55ylts79.execute-api.us-east-1.amazonaws.com/api/CastVote" method="post" onsubmit="hideForm()">
-        <div class="center">
-          <div>
-              <input type="radio" name="vote" value="none" checked id="radio1"><label for="radio1">Too close to call (I'm on the fence)</label>
-          </div>
-          <div>
-              <input type="radio" name="vote" value="Safe" id="radio2"><label for="radio2">Safe for sure, aye!</label>
-          </div>
-          <div>
-              <input type="radio" name="vote" value="Out" id="radio3"><label for="radio3">Definitely out, mate!</label>
-          </div>
+    <!--JW Player sample -->
+    <!-- <iframe src="//content.jwplatform.com/players/oUjm98aj-jWjujI61.html" width="640" height="360" frameborder="0" scrolling="auto" allowfullscreen></iframe> -->
+    <video controls>
+      <source src="https://s3.amazonaws.com/fdpinvideo-s3bucket-1o7psrb07l9xn/input/TheDeparted_trailer.mp4" type="video/mp4">
+      <p>Your browser doesn't support HTML5 video. Here is a <a href="https://s3.amazonaws.com/fdpinvideo-s3bucket-1o7psrb07l9xn/input/TheDeparted_trailer.mp4">link to the video</a> instead.</p>
+    </video>
+
+    <!-- Voting form -->
+    <form action="https://kfb9dlbm36.execute-api.us-west-2.amazonaws.com/prod/vote" method="post" onsubmit="hideForm()">
+      <div class="center">
+        <div>
+        <input type="radio" name="vote" value="none" checked id="radio1"><label for="radio1">Too close to call (I'm on the fence)</label>
+        </div><div>
+        <input type="radio" name="vote" value="Safe" id="radio2"><label for="radio2">Safe for sure, aye!</label>
+        </div><div>
+        <input type="radio" name="vote" value="Out" id="radio3"><label for="radio3">Definitely out, mate!</label>
         </div>
-        <div style="padding-top: 20px;">
-            <input type="submit" value="Submit" />
-        </div>
-      </form>
-      <div class="thanks" style="display:none">Thanks for voting!</div>
-    </div>
+      </div>
+      <div style="padding-top: 20px;"><input type="submit" value="Submit" /></div>
+    </form>
+    <div class="thanks" style="display:none">Thanks for voting!</div>
+
+    <!-- Results -->
+    <h1>RESULTS</h1>
     <div id="canvas-holder" style="width:40%">
         <canvas id="chart-area"></canvas>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
     <script>
+
         var createCORSRequest = function(method, url) {
             var xhr = new XMLHttpRequest();
             if ("withCredentials" in xhr) {
@@ -60,6 +61,7 @@
 
             xhr.onload = function(req) {
                 var dataimport = JSON.parse(xhr.response);
+//                var dataimport = [{"name": "safe", "votes": 10, "color": "#00FF00"},{"name": "none", "votes": 1, "color": "#CC00CC"},{"name": "out", "votes": 20, "color": "#FF0000"}];
                 // Chart stuff goes here, mmmkay.
                 var jsonlabels = [];
                 var jsoncolors = [];
@@ -88,6 +90,7 @@
                     },
                     // Configuration options go here
                     options: {
+//                        rotation: '270'
                     }
                 });
             };
@@ -103,9 +106,19 @@
               window.setTimeout(loadXMLDoc, 6000, true);
             }
 
-            // End of loadXMLDoc function.
-        };
-        loadXMLDoc(true);
-    </script>
-    </body>
+        // End of loadXMLDoc function.
+        }
+
+      function hideForm(){
+        d3.select("form")
+          .style("display", "none");
+        d3.select(".thanks")
+          .style("display", "block");
+        window.setTimeout(loadXMLDoc, 1200, false);
+      }
+
+      loadXMLDoc(true);
+  </script>
+
+  </body>
 </html>
