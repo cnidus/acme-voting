@@ -6,6 +6,7 @@ from botocore.exceptions import ClientError
 
 app = Chalice(app_name='ProcessVotes')
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+TABLE_NAME = "FRAC_Votes"
 
 @app.route('/')
 def index():
@@ -15,59 +16,37 @@ def index():
 def introspect():
     return app.current_request.to_dict()
 
-@app.route('/CastVote', methods=['POST', 'PUT'])
+@app.route('/CastVote', methods=['POST', 'PUT'], content_types=['application/x-www-form-urlencoded'])
 def CastVote():
     request = app.current_request
-    if request.method == 'PUT':
-        stagedvotes[key] == request.json_body
-    elif request.method == 'POST':
-        stagedvotes[key] == request.json_body
+    stagedvote = request.raw_body
+
+
+    print request
 
     identity = request.context['identity']
 
-    #Create the dynamodb table
+    # Put the vote into the dynamodb table: TABLE_NAME
     try:
-        table_vote = dynamodb.create_table(
-            TableName='FRAC_Votes',
-            KeySchema=[
-                {
-                    'AttributeName': 'VoteKey',
-                    'KeyType': 'HASH'    #Partition Key
-                },
-                {
-                    'AttributeName': 'VideoID',
-                    'KeyType': 'RANGE'    #Sort Key for the video that's being voted on.
-                }
-            ],
-            AttributeDefinitions=[
-                {
-                    'AttributeName': 'VoteKey',
-                    'AttributeType': 'S'
-                },
-                {
-                    'AttributeName': 'VideoID',
-                    'AttributeType': 'S'
-                },
-                {
-                    'AttributeName': 'VoterID',
-                    'AttributeType': 'S'
-                },
-                {
-                    'AttributeName': 'Vote',
-                    'AttributeType': 'N'
-                }
-            ],
-            ProvisionedThroughput={
-                'ReadCapacityUnits': 5,
-                'WriteCapacityUnits': 5
+        vote_table = dynamodb.Table(TABLE_NAME)
+        resp = vote_table.update_item(
+            Key={
+                'VoteKey': str(hash("test_key")),
+                'VideoID': "Test_video"
+            },
+            UpdateExpression="set vote = :v",
+            ExpressionAttributeValues={
+                ':v': str(stagedvote)
             }
         )
-        print "FRAC_Votes dynamodb table created"
+        print "Item updated: "
+        print json.dumps(resp, indent=4)
         pass
     except Exception as e:
+        print "Exception adding item to dynamodb: " + str(e)
         raise
 
-    return json.dumps(identity)
+    return str(stagedvote)
 
 @app.route('/GetVotes', methods=['GET'])
 def GetVotes():
