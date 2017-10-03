@@ -1,0 +1,44 @@
+{
+  "inputCount": 1,
+  "outputs":
+  [
+    {
+      "status": "Complete",
+      "presetId": "1351620000001-000010",
+      "height": 720,
+      "width": 1280,
+      "key": "transcoded-720.mp4",
+      "duration": 998, "id": "1"
+    },
+    {
+      "status": "Complete",
+      "presetId": "1351620000001-100070",
+      "height": 720,
+      "width": 1280,
+      "key": "transcoded-web.mp4",
+      "duration": 998,
+      "id": "2"
+    },
+    { 
+      "status": "Complete",
+      "presetId": "1351620000001-100020",
+      "height": 720,
+      "width": 1280,
+      "key": "transcoded-iphone.mp4",
+      "duration": 998,
+      "id": "3"
+    }
+  ],
+  "pipelineId": "1505154458437-1dh401",
+  "jobId": "1505237150723-y7hdjy",
+  "state": "COMPLETED",
+  "version": "2012-09-25",
+  "input":
+    {
+      "resolution": "auto",
+      "container": "auto",
+      "frameRate": "auto",
+      "key": "input/SA Launch Demo Student Presentation - Reduced.mp4"
+    },
+  "outputKeyPrefix": "transcoded/SA Launch Demo Student Presentation - Reduced.mp4/"
+}

@@ -1,0 +1,45 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.0",
+      "eventTime": "2017-10-03T00:56:09.304Z",
+      "requestParameters":
+      {
+        "sourceIPAddress": "72.21.196.65"
+      },
+      "s3":
+      {
+        "configurationId": "057fa753-0472-4633-8dcf-217cf014014d",
+        "object":
+        {
+          "eTag": "d4a9d02c59fe59170578a6648b4de328-3",
+          "sequencer": "0059D2DEACCC205AFC",
+          "key": "input/Honest+Trailers+-+The+Bourne+Trilogy.mp4",
+          "size": 42875427
+        },
+        "bucket":
+        {
+          "arn": "arn:aws:s3:::frac-voting",
+          "name": "frac-voting",
+          "ownerIdentity":
+          {
+            "principalId": "A11243NUTQ63J6"
+          }
+        },
+        "s3SchemaVersion": "1.0"
+      },
+      "responseElements":
+      {
+        "x-amz-id-2": "I/ILZtZZ0LK0X28bwRGbawOQXilQ3CrGcyirBnyomFfntHUovBN+kP5ig4AeM2Ey",
+        "x-amz-request-id": "D0EAB735D4FFA277"
+      },
+      "awsRegion": "us-east-1",
+      "eventName": "ObjectCreated:CompleteMultipartUpload",
+      "userIdentity":
+      {
+        "principalId": "AWS:AROAJ67KGLSATGXQUD7ZE:dyoud-Isengard"
+      },
+      "eventSource": "aws:s3"
+    }
+  ]
+}

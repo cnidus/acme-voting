@@ -26,7 +26,7 @@ def lambda_handler(event, context):
                    'Resolution': 'auto',
                    'FrameRate': 'auto',
                    'Container': 'auto'},
-            OutputKeyPrefix='transcoded/'.format(filename, timestamp),
+            OutputKeyPrefix='transcoded/' + filename + '/',
             Outputs=[
                 {
                     'Key': 'transcoded-720.mp4',

@@ -1,0 +1,23 @@
+{
+  "Records": [
+    {
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1:366895301435:acme-video-transcode:b905b01d-6ffd-4b87-9b91-7cb16e178df4",
+      "EventSource": "aws:sns",
+      "Sns":
+      {
+        "SignatureVersion": "1",
+        "Timestamp": "2017-09-12T17:32:14.849Z",
+        "Signature": "RgZiGSqniolPuPVEzGu07bekfKuEHd1glGo1Gowkr56E21DZWUtiKLgSNYZQR8PQDk5O998av2xghTIl4Ia7DueOkpPF+caAVzhnDZB5L9RnCaKsE//7O1HSCM0Wbk29dVBhVKrcTK1uBF4e/Mzc1o1DSeqjnOX26PT+tor8oSIwPCVfteqDRCvEJMz50xKgBWYhDGOgj0FxgTv8r5OQUasptgKe2pm/BtWAUoEH0fHrFjJ6WSncNbiodggn7h8ScdX9udlIWUoO9jiNelHV8cMPlQAbWX9Af0LnouYpM60iTxSdyMLzyEE/RUzrOpgmeBblbTUjunGMW/gggPnUGg==",
+        "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-433026a4050d206028891664da859041.pem",
+        "MessageId": "18309825-f2a0-5490-9b6f-ca17eefef442",
+        "Message": "{\n  \"state\" : \"COMPLETED\",\n  \"version\" : \"2012-09-25\",\n  \"jobId\" : \"1505237150723-y7hdjy\",\n  \"pipelineId\" : \"1505154458437-1dh401\",\n  \"input\" : {\n    \"key\" : \"input/SA Launch Demo Student Presentation - Reduced.mp4\",\n    \"frameRate\" : \"auto\",\n    \"resolution\" : \"auto\",\n    \"container\" : \"auto\"\n  },\n  \"inputCount\" : 1,\n  \"outputKeyPrefix\" : \"transcoded/SA Launch Demo Student Presentation - Reduced.mp4/\",\n  \"outputs\" : [ {\n    \"id\" : \"1\",\n    \"presetId\" : \"1351620000001-000010\",\n    \"key\" : \"transcoded-720.mp4\",\n    \"status\" : \"Complete\",\n    \"duration\" : 998,\n    \"width\" : 1280,\n    \"height\" : 720\n  }, {\n    \"id\" : \"2\",\n    \"presetId\" : \"1351620000001-100070\",\n    \"key\" : \"transcoded-web.mp4\",\n    \"status\" : \"Complete\",\n    \"duration\" : 998,\n    \"width\" : 1280,\n    \"height\" : 720\n  }, {\n    \"id\" : \"3\",\n    \"presetId\" : \"1351620000001-100020\",\n    \"key\" : \"transcoded-iphone.mp4\",\n    \"status\" : \"Complete\",\n    \"duration\" : 998,\n    \"width\" : 1280,\n    \"height\" : 720\n  } ]\n}", 
+        "MessageAttributes": {},
+        "Type": "Notification",
+        "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:366895301435:acme-video-transcode:b905b01d-6ffd-4b87-9b91-7cb16e178df4",
+        "TopicArn": "arn:aws:sns:us-east-1:366895301435:acme-video-transcode",
+        "Subject": "Amazon Elastic Transcoder has finished transcoding job 1505237150723-y7hdjy."
+      }
+    }
+  ]
+}

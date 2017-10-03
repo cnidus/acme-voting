@@ -1,0 +1,5 @@
+[
+  {"Vote": "safe", "VoterID": "doug1", "VideoID": "1506992170643-ej4cw8"},
+  {"Vote": "out", "VoterID": "doug2", "VideoID": "1506992170643-ej4cw8"},
+  {"Vote": "unclear", "VoterID": "doug3", "VideoID": "1506992170643-ej4cw8"}
+]

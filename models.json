@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ProcessVotesPost_InputModel",
+  "type": "object",
+  "properties": {
+    "VoterID": { "type": "string" },
+    "VideoID": { "type": "string" },
+    "Vote": { "type": "String"}
+    }
+}
