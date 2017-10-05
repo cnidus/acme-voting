@@ -1,0 +1,7 @@
+[
+  {
+    "outputs": "[{\"status\": \"Complete\", \"presetId\": \"1351620000001-000010\", \"height\": 720, \"width\": 1280, \"key\": \"transcoded-720.mp4\", \"duration\": 303, \"id\": \"1\"}, {\"status\": \"Complete\", \"presetId\": \"1351620000001-100070\", \"height\": 720, \"width\": 1280, \"key\": \"transcoded-web.mp4\", \"duration\": 303, \"id\": \"2\"}, {\"status\": \"Complete\", \"presetId\": \"1351620000001-100020\", \"height\": 720, \"width\": 1280, \"key\": \"transcoded-iphone.mp4\", \"duration\": 303, \"id\": \"3\"}]",
+    "VideoID": "1506992170643-ej4cw8",
+    "InputFile": "input/Honest Trailers - The Bourne Trilogy.mp4"
+  }
+]
