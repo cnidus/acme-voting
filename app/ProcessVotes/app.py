@@ -16,7 +16,7 @@ BUCKET_NAME = "frac-voting"
 VOTES_TOTALS_FILE = "votetotals.json"
 
 
-@app.route('/CastVote', methods=['POST'])
+@app.route('/CastVote', methods=['POST'], cors=True)
 def CastVote():
     request = app.current_request
 #    print json.dumps(request.headers)
@@ -76,7 +76,32 @@ def GetVotes(VideoID):
 
     return query_resp['Items']
 
-@app.route('/GetVoteTotals/{VideoID}', methods=['GET'])
+@app.route('/GetAllVoteTotals', methods=['GET'], cors=True)
+def GetAllVoteTotals():
+    VoteTotals = []
+    Vote = {}
+    try:
+        video_table = dynamodb.Table(VOD_TABLE_NAME)
+        video_resp = video_table.scan()
+
+
+        for item in video_resp['Items']:
+            Vote = {
+                "VideoID": item['VideoID'],
+                "Votes": GetVoteTotals(item['VideoID'])[item['VideoID']]['Votes']
+            }
+            VoteTotals.append(Vote)
+
+    except Exception as e:
+        print "Exception genetating all vote totals: " + str(e)
+        raise
+    print "Finished gathering totals: "
+    print json.dumps(VoteTotals)
+
+    return VoteTotals
+
+
+@app.route('/GetVoteTotals/{VideoID}', methods=['GET'], cors=True)
 def GetVoteTotals(VideoID):
     VoteTotals = {
         str(VideoID): {
@@ -98,11 +123,11 @@ def GetVoteTotals(VideoID):
 
         for RawVote in RawVotes:
             VoteTotals[VideoID]['Votes'][str(RawVote['Vote'])] += 1
-        print json.dumps(VoteTotals)
+        # print json.dumps(VoteTotals)
         pass
     except Exception as e:
         print "Exception genetating vote totals: " + str(e)
-        raise
+
 
     return VoteTotals
 
@@ -138,13 +163,13 @@ def UpdateCachedTotals(VideoID):
 @app.route('/GetVideoInfo/{VideoID}', methods=['GET'])
 def GetVideoInfo(VideoID):
     try:
-        vote_table = dynamodb.Table(VOD_TABLE_NAME)
+        video_table = dynamodb.Table(VOD_TABLE_NAME)
 
-        query_resp = vote_table.query(
+        query_resp = video_table.query(
             KeyConditionExpression=Key('VideoID').eq(str(VideoID))
             )
         pass
-        print json.dumps(query_resp)
+        # print json.dumps(query_resp)
 
     except Exception as e:
         print "Exception reading dynamodb: " + str(e)
