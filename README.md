@@ -9,4 +9,6 @@
 5) copy / clone s3 files from github
 6) create the lambda functions (pulling down .zip's from github)
 7) create presetId(s) ()
-8) Create IAM roles; TranscodeVideo.py, 
+8) Create IAM roles; TranscodeVideo.py,
+
+![alt text](/Architecture.png "Frac-Voting Architecture Diagram")
